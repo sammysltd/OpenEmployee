@@ -1,0 +1,9 @@
+{
+  "id": "openemployee.makerchecker",
+  "name": "OpenEmployee MakerChecker Governance",
+  "description": "Routes OpenClaw tools and shell through MakerChecker: deny-by-default authorization before execution and a hash-chained, signed audit record after.",
+  "entry": "dist/plugin.js",
+  "contracts": {
+    "trustedToolPolicies": ["openemployee.makerchecker.tool-gate"]
+  }
+}

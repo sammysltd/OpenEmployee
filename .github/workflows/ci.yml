@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# OpenEmployee depends on @makerchecker/sdk. Until it publishes to npm, CI vendors
+# the source via setup.sh; set MAKERCHECKER_REPO to a clone URL CI can read
+# (e.g. a token-bearing URL in repo secrets). OpenClaw is not needed for the unit
+# build, so SKIP_OPENCLAW=1 keeps CI light. The integration tests (@openemployee/e2e)
+# skip automatically when MAKERCHECKER_API_KEY is unset.
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Vendor MakerChecker and build the SDK
+        env:
+          SKIP_OPENCLAW: "1"
+          MAKERCHECKER_REPO: ${{ secrets.MAKERCHECKER_REPO || 'https://github.com/sammysltd/makerchecker' }}
+        run: ./setup.sh
+
+      - name: Install
+        run: corepack pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: corepack pnpm -r --filter "./packages/**" typecheck
+
+      - name: Build
+        run: corepack pnpm -r --filter "./packages/**" build
+
+      - name: Test
+        run: corepack pnpm -r --filter "./packages/**" test

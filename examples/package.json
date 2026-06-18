@@ -1,0 +1,27 @@
+{
+  "name": "@openemployee/examples",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Runnable OpenEmployee demos against a live MakerChecker server.",
+  "scripts": {
+    "smoke": "node smoke.mjs",
+    "control-room": "node control-room.mjs",
+    "org-demo": "node org-demo.mjs",
+    "coding-agent": "node coding-agent.mjs",
+    "finance-pa": "node --env-file-if-exists=.env finance-pa.mjs",
+    "outreach-agent": "node --env-file-if-exists=.env outreach-agent.mjs",
+    "dlp": "node --env-file-if-exists=.env dlp.mjs",
+    "tamper-evident": "node --env-file-if-exists=.env tamper-evident.mjs",
+    "ungoverned-vs-governed": "node ungoverned-vs-governed.mjs",
+    "approval": "node approval.mjs",
+    "red-team": "node red-team.mjs",
+    "onboard-org": "node onboard-org.mjs"
+  },
+  "dependencies": {
+    "@makerchecker/sdk": "^1.0.4",
+    "@openemployee/connector-openclaw": "workspace:*",
+    "@openemployee/employee": "workspace:*",
+    "pg": "^8.13.1"
+  }
+}

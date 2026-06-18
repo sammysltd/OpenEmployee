@@ -1,0 +1,23 @@
+{
+  "name": "@openemployee/e2e",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Integration tests: the connector + employee model against a live MakerChecker server.",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@makerchecker/sdk": "^1.0.4",
+    "@openemployee/connector-openclaw": "workspace:*",
+    "@openemployee/employee": "workspace:*",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/pg": "^8.11.10",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
+  }
+}

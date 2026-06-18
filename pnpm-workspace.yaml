@@ -1,0 +1,11 @@
+packages:
+  - "packages/*"
+  - "examples"
+allowBuilds:
+  esbuild: true
+# Supply-chain hardening: refuse dependencies published less than a day ago
+# (a common window for compromised-release attacks). Exempt our own first-party
+# @makerchecker/sdk so a fresh release of it isn't blocked by its own delay.
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@makerchecker/sdk"

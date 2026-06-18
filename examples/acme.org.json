@@ -1,0 +1,36 @@
+{
+  "org": "Acme",
+  "employees": [
+    {
+      "name": "research-assistant",
+      "description": "Reads public sources and drafts briefs.",
+      "role": { "name": "researcher", "description": "Reads and drafts." },
+      "owner": { "id": "u-lead", "email": "lead@acme.co" },
+      "skills": [
+        { "name": "web-fetch", "version": 1, "riskTier": "low", "description": "Fetch a URL", "tools": ["web_fetch"] },
+        { "name": "summarize", "version": 1, "riskTier": "low", "description": "Summarize text", "tools": ["summarize"] }
+      ]
+    },
+    {
+      "name": "data-engineer",
+      "description": "Builds and runs data pipelines.",
+      "role": { "name": "data", "description": "Runs pipelines." },
+      "owner": { "id": "u-data-head", "email": "data-head@acme.co" },
+      "skills": [
+        { "name": "run-pipeline", "version": 1, "riskTier": "low", "description": "Run a pipeline", "tools": ["run_pipeline"] },
+        { "name": "drop-table", "version": 1, "riskTier": "high", "description": "Drop a table", "tools": ["drop_table"] }
+      ]
+    },
+    {
+      "name": "ops-engineer",
+      "description": "Operates production infrastructure.",
+      "role": { "name": "ops", "description": "Runs ops tasks." },
+      "owner": { "id": "u-sre", "email": "sre@acme.co" },
+      "skills": [
+        { "name": "read-logs", "version": 1, "riskTier": "low", "description": "Read logs", "tools": ["read_logs"] },
+        { "name": "deploy", "version": 1, "riskTier": "high", "description": "Deploy to production", "tools": ["deploy_prod"] }
+      ],
+      "separationOfDuties": ["data"]
+    }
+  ]
+}
